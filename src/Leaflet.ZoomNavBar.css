@@ -1,6 +1,7 @@
 /* Adapted from https://stackoverflow.com/a/41624412 (CC BY-SA 3.0 license) */
 .leaflet-bar.leaflet-control-zoomnavbar {
   border-width: 0px;
+  background-clip: padding-box;
 }
 
 .leaflet-control-zoomnavbar, .leaflet-control-zoomnavbar-row {
@@ -19,33 +20,10 @@
 }
 
 .leaflet-bar.leaflet-control-zoomnavbar a {
-  border: 1px solid rgba(0,0,0,0.2);
+  border: 1px solid rgba(0,0,0,0.3);
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.3);
 }
 
-/* Icons from Font-Awesome  | Font Awesome by Dave Gandy - http://fontawesome.io*/
-/* Thanks to http://fa2png.io/ for icon png generation */
-
-.leaflet-control-zoomnavbar-fwd {
-background-image: url("img/arrow-right_000000_14.png");
-}
-
-.leaflet-control-zoomnavbar-back {
-background-image: url("img/arrow-left_000000_14.png");
-}
-
-.leaflet-control-zoomnavbar-home {
-background-image: url("img/home_000000_14.png");
-}
-
-
-.leaflet-control-zoomnavbar-fwd-disabled {
-background-image: url("img/arrow-right_bbbbbb_14.png");
-}
-
-.leaflet-control-zoomnavbar-back-disabled {
-background-image: url("img/arrow-left_bbbbbb_14.png");
-}
-
-.leaflet-control-zoomnavbar-home-disabled {
-background-image: url("img/home_bbbbbb_14.png");
+.leaflet-control-zoomnavbar-row a:nth-of-type(2) {
+  border: 1px solid rgba(0,0,0,0.1);
 }
