@@ -1,9 +1,11 @@
 /*
-*  Simple navigation control that allows back and forward navigation through map's view history
+* Simple zoom and navigation control that allows changing of zoom levels and back and forward navigation through map's view history.
+* Original plugin by David C. (https://github.com/davidchouse/Leaflet.NavBar, MIT license).
+* Zoom functionality added by Claire Wagner.
 */
 
 (function() {
-  L.Control.NavBar = L.Control.extend({
+  L.Control.ZoomNavBar = L.Control.extend({
     options: {
       position: 'topleft',
       //center:,
@@ -26,7 +28,7 @@
       var options = this.options;
 
       // Create toolbar
-      var controlName = 'leaflet-control-navbar',
+      var controlName = 'leaflet-control-zoomnavbar',
       container = L.DomUtil.create('div', controlName + ' leaflet-bar');
 
       // Add toolbar buttons
@@ -109,7 +111,7 @@
 
     _setFwdEnabled: function(enabled) {
       var leafletDisabled = 'leaflet-disabled';
-      var fwdDisabled = 'leaflet-control-navbar-fwd-disabled';
+      var fwdDisabled = 'leaflet-control-zoomnavbar-fwd-disabled';
       if (enabled === true) {
         L.DomUtil.removeClass(this._fwdButton, fwdDisabled);
         L.DomUtil.removeClass(this._fwdButton, leafletDisabled);
@@ -121,7 +123,7 @@
 
     _setBackEnabled: function(enabled) {
       var leafletDisabled = 'leaflet-disabled';
-      var backDisabled = 'leaflet-control-navbar-back-disabled';
+      var backDisabled = 'leaflet-control-zoomnavbar-back-disabled';
       if (enabled === true) {
         L.DomUtil.removeClass(this._backButton, backDisabled);
         L.DomUtil.removeClass(this._backButton, leafletDisabled);
@@ -147,8 +149,8 @@
 
   });
 
-  L.control.navbar = function(options) {
-    return new L.Control.NavBar(options);
+  L.control.zoomNavBar = function(options) {
+    return new L.Control.ZoomNavBar(options);
   };
 
 })();
