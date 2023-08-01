@@ -32,12 +32,13 @@
       // Create toolbar
       var controlName = 'leaflet-control-zoomnavbar',
       container = L.DomUtil.create('div', controlName + ' leaflet-bar');
-
+      
       // Add toolbar buttons
       this._zoomInButton = this._createButton(options.zoomInTitle,controlName + '-zoomin', container, this._zoomIn.bind(this));
-      this._homeButton = this._createButton(options.homeTitle, controlName + '-home', container, this._goHome);
-      this._fwdButton = this._createButton(options.forwardTitle, controlName + '-fwd', container, this._goFwd);
-      this._backButton = this._createButton(options.backTitle, controlName + '-back', container, this._goBack);
+      var row = L.DomUtil.create('div', controlName + '-row', container);
+      this._backButton = this._createButton(options.backTitle, controlName + '-back', row, this._goBack);
+      this._homeButton = this._createButton(options.homeTitle, controlName + '-home', row, this._goHome);
+      this._fwdButton = this._createButton(options.forwardTitle, controlName + '-fwd', row, this._goFwd);
       this._zoomOutButton = this._createButton(options.zoomOutTitle,controlName + '-zoomout', container, this._zoomOut.bind(this));
 
       // Initialize view history and index
