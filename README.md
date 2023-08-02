@@ -7,11 +7,15 @@ L.ZoomNavBar is a simple zoom and navigation plugin for Leaflet. It combines zoo
 
 Demo: http://cw353.github.io/Leaflet.ZoomNavBar/
 
-![Leaflet.ZoomNavBar Screenshot](./screenshot.png)
+![Leaflet.ZoomNavBar screenshot with zoom controls enabled](./screenshot1.png)  
+
+![Leaflet.ZoomNavBar screenshot with zoom controls disabled](./screenshot2.png)
 
 ## Details
 
 Adapted from <a href='https://github.com/davidchouse/'>David C.</a>'s <a href='https://github.com/davidchouse/Leaflet.NavBar'>L.NavBar</a> plugin, L.ZoomNavBar combines the original plugin's view navigation features with new zoom functionality. The buttons are styled into a single, compact control to reduce the amount of space they take up on the map.
+
+The zoom buttons on the control can be enabled or disabled as desired, depending on the use case. See the demo for examples.
 
 ## Requirements
 - Leaflet 1.x
@@ -51,6 +55,7 @@ Options for initialising the Leaflet.ZoomNavBar control:
 | center | `L.LatLng` | Current center of map | The center point for the home view.
 | zoom | Number | `0` | The zoom value for the home view.
 | bbox | `L.LatLngBounds` | `null` | The bounding box for the home view (as an alternative to specifying center/zoom; takes precedence if included).
+| enableZoom | Boolean | `true` | Whether or not to include zoom buttons on the control.
 | forwardTitle | String | `'Go forward in map view history'` | The title text for the button used to navigate forward in map history.
 | backTitle | String | `'Go back in map view history'` | The title text for the button used to navigate back in map history.
 | homeTitle | String | `'Go to home map view'` | The title text for the home view button.
