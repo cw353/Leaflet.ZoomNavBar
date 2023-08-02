@@ -8,6 +8,7 @@
   L.Control.ZoomNavBar = L.Control.Zoom.extend({
     options: {
       position: 'topleft',
+      enableZoom: true,
       //center:,
       //zoom :,
       //bbox:, //Alternative to center/zoom for home button, takes precedence if included
@@ -34,12 +35,12 @@
       container = L.DomUtil.create('div', controlName + ' leaflet-bar');
       
       // Add toolbar buttons
-      this._zoomInButton = this._createButton("<i class='fa fa-plus'></i>", options.zoomInTitle,controlName + '-zoomin', container, this._zoomIn.bind(this));
+      if (this.options.enableZoom) this._zoomInButton = this._createButton("<i class='fa fa-plus'></i>", options.zoomInTitle,controlName + '-zoomin', container, this._zoomIn.bind(this));
       var row = L.DomUtil.create('div', controlName + '-row', container);
       this._backButton = this._createButton("<i class='fa fa-arrow-left'></i>", options.backTitle, controlName + '-back', row, this._goBack);
       this._homeButton = this._createButton("<i class='fa fa-home fa-lg'></i>", options.homeTitle, controlName + '-home', row, this._goHome);
       this._fwdButton = this._createButton("<i class='fa fa-arrow-right'></i>", options.forwardTitle, controlName + '-fwd', row, this._goFwd);
-      this._zoomOutButton = this._createButton("<i class='fa fa-minus'></i>", options.zoomOutTitle,controlName + '-zoomout', container, this._zoomOut.bind(this));
+      if (this.options.enableZoom) this._zoomOutButton = this._createButton("<i class='fa fa-minus'></i>", options.zoomOutTitle,controlName + '-zoomout', container, this._zoomOut.bind(this));
 
       // Initialize view history and index
       this._viewHistory = [{center: this.options.center, zoom: this.options.zoom}];
@@ -123,7 +124,7 @@
     },
 
     _updateDisabled: function() {
-      L.Control.Zoom.prototype._updateDisabled.call(this); // call parent function
+      if (this.options.enableZoom) L.Control.Zoom.prototype._updateDisabled.call(this); // call parent function
       if (this._curIndx == (this._viewHistory.length - 1)) {
         this._setFwdEnabled(false);
       }else {
