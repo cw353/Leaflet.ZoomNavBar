@@ -12,11 +12,28 @@
   <script src="./src/Leaflet.ZoomNavBar.js"></script>
 
   <style>
-    #map {
-      height: 70vh;
+    #mapdiv {
+      display: flex;
+      flex-direction: row;
+    }
+    .map-container {
+      height: 60vh;
+      width: 50%;
+      text-align: center;
+    }
+    .map {
+      height: 100%;
+      border: 2px solid black;
+    }
+    #map2 {
+      margin-left: 5px;
     }
     .info h1 {
       text-align: center;
+    }
+    .map-container h2 {
+      font-size: 1.1em;
+      margin: 5px;
     }
   </style>
 </head>
@@ -29,20 +46,44 @@
       <li> Click on the <i class='fa fa-arrow-left'></i> and <i class='fa fa-arrow-right'></i> buttons to navigate through map view history.</li>
       <li>Click on the <i class='fa fa-home'></i> button to return to the initial map view.</li>
     </ul>
+    <p>You can choose to enable or disable the zoom buttons on the control, as shown in the examples below.</p>
   </div>
-  <div id="map"></div>
+  <div id="mapdiv">
+    <div class="map-container">
+      <h2>Map with zoom buttons enabled on control</h2>
+    <div id="map1" class="map" title="Map with zoom buttons enabled on control"></div>
+  </div>
+<div class="map-container">
+  <h2>Map with zoom buttons disabled on control</h2>
+    <div id="map2" class="map" title="Map with zoom buttons disabled on control"></div>
+    </div>
+  </div>
 
   <script type="text/javascript">
     
-    var map = L.map('map', {
+    var map1 = L.map('map1', {
+      zoomControl: false,
+    }).setView([39,-77], 10);
+
+    var map2 = L.map('map2', {
       zoomControl: false,
     }).setView([39,-77], 10);
 
     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: 'Map data &copy; OpenStreetMap contributors',
-    }).addTo(map);
+    }).addTo(map1);
+    
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; OpenStreetMap contributors',
+    }).addTo(map2);
 
-    L.control.zoomNavBar().addTo(map);
+    L.control.zoomNavBar({
+      enableZoom: true,
+    }).addTo(map1);
+
+    L.control.zoomNavBar({
+      enableZoom: false,
+    }).addTo(map2);
 
   </script>
 </body>
