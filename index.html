@@ -1,0 +1,49 @@
+<!-- Adapted from https://github.com/davidchouse/Leaflet.NavBar/blob/gh-pages/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Leaflet.ZoomNavBar Demo</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="./src/Leaflet.ZoomNavBar.css"/>
+  <script src="./src/Leaflet.ZoomNavBar.js"></script>
+
+  <style>
+    #map {
+      height: 70vh;
+    }
+    .info h1 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="info">
+    <h1>L.ZoomNavBar Demo</h1>
+    <p><a href="https://github.com/cw353/Leaflet.ZoomNavBar">L.ZoomNavBar</a> is a simple zoom and navigation plugin for Leaflet. It combines zoom control and view history navigation into a single, compact, easy-to-use toolbar.</p>
+    <ul>
+      <li>Click on the <i class='fa fa-plus'></i> and <i class='fa fa-minus'></i> buttons to zoom the map view in and out.</li>
+      <li> Click on the <i class='fa fa-arrow-left'></i> and <i class='fa fa-arrow-right'></i> buttons to navigate through map view history.</li>
+      <li>Click on the <i class='fa fa-home'></i> button to return to the initial map view.</li>
+    </ul>
+  </div>
+  <div id="map"></div>
+
+  <script type="text/javascript">
+    
+    var map = L.map('map', {
+      zoomControl: false,
+    }).setView([39,-77], 10);
+
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; OpenStreetMap contributors',
+    }).addTo(map);
+
+    L.control.zoomNavBar().addTo(map);
+
+  </script>
+</body>
+</html>
