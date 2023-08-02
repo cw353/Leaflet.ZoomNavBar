@@ -39,10 +39,26 @@ Then load in the CSS and JS files from this repository:
 <script src="Leaflet.ZoomNavBar.js"></script>
 ```
 
-Finally, create and add the control:
+Next, create the map. If you don't want to use Leaflet's native zoom control in addition to this plugin, set the option `zoomControl` to `false`:
 
 ````js
-L.control.navbar().addTo(map);
+var map = L.map('map', {
+  zoomControl: false
+});
+````
+
+Finally, create and add the ZoomNavBar control:
+
+````js
+L.control.zoomNavBar().addTo(map);
+````
+
+The ZoomNavBar control has zoom buttons enabled by default. If you don't want to include the zoom buttons, simply set the `enableZoom` option to `false`:
+
+````js
+L.control.zoomNavBar({
+  enableZoom: false
+}).addTo(map);
 ````
 
 ## Options
